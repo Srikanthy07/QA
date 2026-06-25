@@ -380,41 +380,10 @@
             <div class="qg-phase" style="background:#166534" tabindex="0">Closure<div class="qg-tooltip"><div class="qg-tooltip-id">PCL – Closure</div><div class="qg-tooltip-desc">Project formally closed. Lessons learned captured. All archives complete.</div></div></div>
           </div>
 
-          <!-- ── Gate Name Reference Box ── -->
-          <div class="qg-namebox">
-            <div class="qg-namebox__title">Project Gate Quality Checks</div>
-            <div class="qg-namebox__grid">
-              <div class="qg-namebox__item">
-                <strong>PI</strong>
-                <span>Project Initiation Gate - Quality checks</span>
-                <p>Customer requirements received &amp; understood; Project scope defined; NDA/contracts available; Roles assigned; Risk assessment completed; Resource planning initiated; Repository created; Standards identified; ASPICE tailoring</p>
-              </div>
-              <div class="qg-namebox__item">
-                <strong>PCP</strong>
-                <span>Project Concept Gate - Quality checks</span>
-                <p>Feasibility analysis; Requirements reviewed; High-level architecture; Initial estimation; Safety/security considerations; Technical risks; Quality objectives defined</p>
-              </div>
-              <div class="qg-namebox__item">
-                <strong>PPL</strong>
-                <span>Project Planning Gate - Quality checks</span>
-                <p>PMP approved; Development plan baselined; CM Plan; QA Plan; V&amp;V strategy; Traceability; Competency verified; Metrics defined</p>
-              </div>
-              <div class="qg-namebox__item">
-                <strong>PDT</strong>
-                <span>Project Development Gate - Quality checks</span>
-                <p>Requirements baseline; Architecture/design reviews; Coding compliance; Peer reviews; Unit testing; Integration testing; Defect &amp; risk monitoring; Process compliance</p>
-              </div>
-              <div class="qg-namebox__item">
-                <strong>PRL</strong>
-                <span>Project Release Gate - Quality checks</span>
-                <p>V&amp;V completed; Defect analysis; Traceability complete; Regression, performance &amp; security testing; Release notes; Delivery approval</p>
-              </div>
-              <div class="qg-namebox__item">
-                <strong>PCL</strong>
-                <span>Project Closure Gate - Quality checks</span>
-                <p>Deliverables submitted; Sign-off received; Lessons learned; Metrics closure; Risks archived; Documentation archived; Resource release</p>
-              </div>
-            </div>
+          <div class="qg-checks-cta">
+            <a href="quality-checks.html?type=project" class="qg-checks-btn qg-checks-btn--proj">
+              View Project Quality Checks <i class="fa-solid fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -437,40 +406,10 @@
             </div>
           </div>
 
-          <div class="qg-namebox">
-            <div class="qg-namebox__title">System Gate Quality Checks</div>
-            <div class="qg-namebox__grid">
-              <div class="qg-namebox__item">
-                <strong>SYSI</strong>
-                <span>System Initiation Gate - Quality checks</span>
-                <p>System scope; Stakeholder Requirements gathering; Interfaces identified.</p>
-              </div>
-              <div class="qg-namebox__item">
-                <strong>SYSCF</strong>
-                <span>System Concept Freeze Gate - Quality checks</span>
-                <p>Requirements reviewed; Functional analysis; Initial architecture; Safety review.</p>
-              </div>
-              <div class="qg-namebox__item">
-                <strong>SYSPL</strong>
-                <span>System Planning Gate - Quality checks</span>
-                <p>Development plan approved; Traceability established; Verification strategy.</p>
-              </div>
-              <div class="qg-namebox__item">
-                <strong>SYSDT</strong>
-                <span>System Development Gate - Quality checks</span>
-                <p>Architecture review; Interface consistency; Integration testing; Requirement coverage.</p>
-              </div>
-              <div class="qg-namebox__item">
-                <strong>SYSRL</strong>
-                <span>System Release Gate - Quality checks</span>
-                <p>Validation completed; Traceability complete; Acceptance criteria verified.</p>
-              </div>
-              <div class="qg-namebox__item">
-                <strong>SYSCL</strong>
-                <span>System Closure Gate - Quality checks</span>
-                <p>Documents archived; Lessons learned; Pending issues tracked.</p>
-              </div>
-            </div>
+          <div class="qg-checks-cta">
+            <a href="quality-checks.html?type=system" class="qg-checks-btn qg-checks-btn--sys">
+              View System Quality Checks <i class="fa-solid fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -493,45 +432,21 @@
             </div>
           </div>
 
-          <div class="qg-namebox">
-            <div class="qg-namebox__title">Software Gate Quality Checks</div>
-            <div class="qg-namebox__grid">
-              <div class="qg-namebox__item">
-                <strong>SWI</strong>
-                <span>Software Initiation Gate - Quality checks</span>
-                <p>Scope identified; Standards identified; Development environment ready.</p>
-              </div>
-              <div class="qg-namebox__item">
-                <strong>SWCP</strong>
-                <span>Software Concept Phase Gate - Quality checks</span>
-                <p>Requirements analyzed; Feasibility reviewed; Initial architecture.</p>
-              </div>
-              <div class="qg-namebox__item">
-                <strong>SWPL</strong>
-                <span>Software Planning Gate - Quality checks</span>
-                <p>Development plan approved; Coding standards; Unit test strategy; CI/CD readiness.</p>
-              </div>
-              <div class="qg-namebox__item">
-                <strong>SWDT</strong>
-                <span>Software Development Gate - Quality checks</span>
-                <p>Design review; Code review; Static analysis; Unit testing; Integration testing.</p>
-              </div>
-              <div class="qg-namebox__item">
-                <strong>SWRL</strong>
-                <span>Software Release Gate - Quality checks</span>
-                <p>Qualification testing; Regression testing; Release package verified.</p>
-              </div>
-              <div class="qg-namebox__item">
-                <strong>SWCL</strong>
-                <span>Software Closure Gate - Quality checks</span>
-                <p>Source code archived; Metrics captured; Lessons learned.</p>
-              </div>
-            </div>
+          <div class="qg-checks-cta">
+            <a href="quality-checks.html?type=software" class="qg-checks-btn qg-checks-btn--sw">
+              View Software Quality Checks <i class="fa-solid fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
 
     </div><!-- /.qg-root -->
+    <!--
+      Detailed quality-check grids (name boxes) for each gate type now
+      live on quality-checks.html and are rendered based on the ?type=
+      URL parameter set by the "View Quality Checks" buttons above.
+      See js/quality-checks.js.
+    -->
   </div>
 </section>
 

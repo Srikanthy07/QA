@@ -50,9 +50,11 @@
       text-decoration: none; transition: background .18s, border-color .18s, color .18s;
     }
     .qc-tab:hover { background: rgba(255,255,255,.14); color: #fff; }
-    .qc-tab.active-proj { background: #0891b2; border-color: #0891b2; color: #fff; }
-    .qc-tab.active-sys  { background: #1e3a8a; border-color: #1e3a8a; color: #fff; }
-    .qc-tab.active-sw   { background: #7e22ce; border-color: #7e22ce; color: #fff; }
+    .qc-tab.active-proj,
+    .qc-tab.active-sys,
+    .qc-tab.active-sw {
+      background: var(--teal,#00aabb); border-color: var(--teal,#00aabb); color: #fff;
+    }
 
     /* ── Hero title area ── */
     .qc-hero__title-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
@@ -62,10 +64,15 @@
       font-family: var(--font-head,'Barlow Condensed',sans-serif);
       font-size: .8rem; font-weight: 800; color: #fff; letter-spacing: .06em;
       text-transform: uppercase;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.28);
     }
-    .qc-hero__badge--proj { background: #0891b2; }
-    .qc-hero__badge--sys  { background: #1e3a8a; }
-    .qc-hero__badge--sw   { background: #7e22ce; }
+    .qc-hero__badge--proj,
+    .qc-hero__badge--sys,
+    .qc-hero__badge--sw {
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.28);
+    }
     .qc-hero__h1 {
       font-family: var(--font-head,'Barlow Condensed',sans-serif);
       font-size: clamp(1.5rem,3vw,2.1rem); font-weight: 800; color: #fff; margin: 0;
@@ -87,6 +94,24 @@
 
     /* Wrap existing qg-root so it gets padding */
     .qc-gate-wrap { padding: 24px; }
+
+    /* ── Muted, professional banner & body (override bright homepage colors for this page only) ── */
+    .qc-gate-wrap .qg-banner {
+      background: var(--navy,#0d2b45) !important;
+      position: relative;
+    }
+    .qc-gate-wrap .qg-banner::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+    }
+    .qc-gate-wrap .qg-banner--proj::before { background: #0891b2; }
+    .qc-gate-wrap .qg-banner--sys::before  { background: #3b5bdb; }
+    .qc-gate-wrap .qg-banner--sw::before   { background: #8b5cf6; }
+
+    .qc-gate-wrap .qg-body--proj,
+    .qc-gate-wrap .qg-body--sys,
+    .qc-gate-wrap .qg-body--sw {
+      background: #fafbfc !important;
+    }
 
     /* ── Not found ── */
     .qc-not-found {
@@ -173,27 +198,8 @@
             <div class="qg-tier">
               <div class="qg-banner qg-banner--proj">IAST Project Quality Gates</div>
               <div class="qg-body qg-body--proj">
-                <div class="qg-track-zone">
-                  <div class="qg-pipe qg-pipe--proj"></div>
-                  <div class="qg-endcap qg-endcap--l"><div class="qg-cap-dot qg-cap-dot--proj"></div></div>
-                  <div class="qg-endcap qg-endcap--r"><div class="qg-cap-dot qg-cap-dot--proj"></div></div>
-                  <div class="qg-nodes">
-                    <div class="qg-node" tabindex="0"><div class="qg-label">PI</div><div class="qg-gem qg-gem--lg" style="background:#dc2626"></div><div class="qg-tooltip"><div class="qg-tooltip-id">PI</div><div class="qg-tooltip-name">Project Initiation Gate</div><div class="qg-tooltip-desc">Define scope, objectives, initial risks and resource estimates. Formal project kick-off gate.</div></div></div>
-                    <div class="qg-node" tabindex="0"><div class="qg-label">PCP</div><div class="qg-gem qg-gem--lg" style="background:#ea7a1a"></div><div class="qg-tooltip"><div class="qg-tooltip-id">PCP</div><div class="qg-tooltip-name">Project Concept Gate</div><div class="qg-tooltip-desc">Feasibility study and high-level architecture definition. Technical and business feasibility confirmed.</div></div></div>
-                    <div class="qg-node" tabindex="0"><div class="qg-label">PPL</div><div class="qg-gem qg-gem--lg" style="background:#64748b"></div><div class="qg-tooltip"><div class="qg-tooltip-id">PPL</div><div class="qg-tooltip-name">Project Planning Gate</div><div class="qg-tooltip-desc">Establish PMP, QA plan, and change management plan. All plans reviewed and approved.</div></div></div>
-                    <div class="qg-node" tabindex="0"><div class="qg-label">PDT</div><div class="qg-gem qg-gem--lg" style="background:#2563eb"></div><div class="qg-tooltip"><div class="qg-tooltip-id">PDT</div><div class="qg-tooltip-name">Project Development Gate</div><div class="qg-tooltip-desc">Reviews, testing activities, and defect tracking. Verify completeness against project plan.</div></div></div>
-                    <div class="qg-node" tabindex="0"><div class="qg-label">PRL</div><div class="qg-gem qg-gem--lg" style="background:#16a34a"></div><div class="qg-tooltip"><div class="qg-tooltip-id">PRL</div><div class="qg-tooltip-name">Project Release Gate</div><div class="qg-tooltip-desc">Validation, final acceptance testing, and controlled product release to the customer.</div></div></div>
-                    <div class="qg-node" tabindex="0"><div class="qg-label">PCL</div><div class="qg-gem qg-gem--lg" style="background:#166534"></div><div class="qg-tooltip"><div class="qg-tooltip-id">PCL</div><div class="qg-tooltip-name">Project Closure Gate</div><div class="qg-tooltip-desc">Formal sign-off, lessons learned documentation, and project archive. Contractual closure.</div></div></div>
-                  </div>
-                </div>
-                <div class="qg-phases">
-                  <div class="qg-phase" style="background:#dc2626" tabindex="0">Initiation<div class="qg-tooltip"><div class="qg-tooltip-id">PI – Initiation</div><div class="qg-tooltip-desc">Scope, risks, and resources defined. Project formally kicked off.</div></div></div>
-                  <div class="qg-phase" style="background:#ea7a1a" tabindex="0">Concept<div class="qg-tooltip"><div class="qg-tooltip-id">PCP – Concept</div><div class="qg-tooltip-desc">Feasibility and architecture validated. Business case confirmed.</div></div></div>
-                  <div class="qg-phase" style="background:#64748b" tabindex="0">Planning<div class="qg-tooltip"><div class="qg-tooltip-id">PPL – Planning</div><div class="qg-tooltip-desc">PMP, QA plan, and change plans reviewed and approved by all stakeholders.</div></div></div>
-                  <div class="qg-phase" style="background:#2563eb" tabindex="0">Development<div class="qg-tooltip"><div class="qg-tooltip-id">PDT – Development</div><div class="qg-tooltip-desc">Active development, code reviews, testing, and defect resolution phase.</div></div></div>
-                  <div class="qg-phase" style="background:#16a34a" tabindex="0">Release<div class="qg-tooltip"><div class="qg-tooltip-id">PRL – Release</div><div class="qg-tooltip-desc">Validation complete. Product released to customer with acceptance sign-off.</div></div></div>
-                  <div class="qg-phase" style="background:#166534" tabindex="0">Closure<div class="qg-tooltip"><div class="qg-tooltip-id">PCL – Closure</div><div class="qg-tooltip-desc">Project formally closed. Lessons learned captured. All archives complete.</div></div></div>
-                </div>
+                
+                
                 <div class="qg-namebox">
                   <div class="qg-namebox__title">Project Gate Quality Checks</div>
                   <div class="qg-namebox__grid">
@@ -244,19 +250,7 @@
             <div class="qg-tier">
               <div class="qg-banner qg-banner--sys">IAST System Quality Gate</div>
               <div class="qg-body qg-body--sys">
-                <div class="qg-track-zone">
-                  <div class="qg-pipe qg-pipe--sys"></div>
-                  <div class="qg-endcap qg-endcap--l"><div class="qg-cap-dot qg-cap-dot--sys"></div></div>
-                  <div class="qg-endcap qg-endcap--r"><div class="qg-cap-dot qg-cap-dot--sys"></div></div>
-                  <div class="qg-nodes">
-                    <div class="qg-node" tabindex="0"><div class="qg-label">SYSI</div><div class="qg-gem qg-gem--md" style="background:#dc2626"></div><div class="qg-tooltip"><div class="qg-tooltip-id">SYSI</div><div class="qg-tooltip-name">System Initiation Gate</div><div class="qg-tooltip-desc">System engineering scope defined. Initial system requirements identified and stakeholders aligned.</div></div></div>
-                    <div class="qg-node" tabindex="0"><div class="qg-label">SYSCF</div><div class="qg-gem qg-gem--md" style="background:#ea7a1a"></div><div class="qg-tooltip"><div class="qg-tooltip-id">SYSCF</div><div class="qg-tooltip-name">System Concept Freeze Gate</div><div class="qg-tooltip-desc">Requirements and functional analysis completed. Feasibility confirmed at system level.</div></div></div>
-                    <div class="qg-node" tabindex="0"><div class="qg-label">SYSPL</div><div class="qg-gem qg-gem--md" style="background:#64748b"></div><div class="qg-tooltip"><div class="qg-tooltip-id">SYSPL</div><div class="qg-tooltip-name">System Planning Gate</div><div class="qg-tooltip-desc">System planning and traceability matrix established. Integration strategy defined and approved.</div></div></div>
-                    <div class="qg-node" tabindex="0"><div class="qg-label">SYSDT</div><div class="qg-gem qg-gem--md" style="background:#2563eb"></div><div class="qg-tooltip"><div class="qg-tooltip-id">SYSDT</div><div class="qg-tooltip-name">System Development Gate</div><div class="qg-tooltip-desc">Architecture design and integration testing performed. System defects tracked and resolved.</div></div></div>
-                    <div class="qg-node" tabindex="0"><div class="qg-label">SYSRL</div><div class="qg-gem qg-gem--md" style="background:#16a34a"></div><div class="qg-tooltip"><div class="qg-tooltip-id">SYSRL</div><div class="qg-tooltip-name">System Release Gate</div><div class="qg-tooltip-desc">Validation and acceptance testing complete. System released for customer validation.</div></div></div>
-                    <div class="qg-node" tabindex="0"><div class="qg-label">SYSCL</div><div class="qg-gem qg-gem--md" style="background:#166534"></div><div class="qg-tooltip"><div class="qg-tooltip-id">SYSCL</div><div class="qg-tooltip-name">System Closure Gate</div><div class="qg-tooltip-desc">System engineering formally closed. All documentation archived. Lessons learned recorded.</div></div></div>
-                  </div>
-                </div>
+                
                 <div class="qg-namebox">
                   <div class="qg-namebox__title">System Gate Quality Checks</div>
                   <div class="qg-namebox__grid">
@@ -307,19 +301,7 @@
             <div class="qg-tier">
               <div class="qg-banner qg-banner--sw">IAST SW Quality Gate</div>
               <div class="qg-body qg-body--sw">
-                <div class="qg-track-zone">
-                  <div class="qg-pipe qg-pipe--sw"></div>
-                  <div class="qg-endcap qg-endcap--l"><div class="qg-cap-dot qg-cap-dot--sw"></div></div>
-                  <div class="qg-endcap qg-endcap--r"><div class="qg-cap-dot qg-cap-dot--sw"></div></div>
-                  <div class="qg-nodes">
-                    <div class="qg-node" tabindex="0"><div class="qg-label">SWI</div><div class="qg-gem qg-gem--sm" style="background:#dc2626"></div><div class="qg-tooltip"><div class="qg-tooltip-id">SWI</div><div class="qg-tooltip-name">Software Initiation Gate</div><div class="qg-tooltip-desc">Software engineering scope and objectives defined. SW team resources allocated.</div></div></div>
-                    <div class="qg-node" tabindex="0"><div class="qg-label">SWCP</div><div class="qg-gem qg-gem--sm" style="background:#ea7a1a"></div><div class="qg-tooltip"><div class="qg-tooltip-id">SWCP</div><div class="qg-tooltip-name">Software Concept Phase Gate</div><div class="qg-tooltip-desc">SW requirements and feasibility analysis completed. High-level SW architecture outlined.</div></div></div>
-                    <div class="qg-node" tabindex="0"><div class="qg-label">SWPL</div><div class="qg-gem qg-gem--sm" style="background:#64748b"></div><div class="qg-tooltip"><div class="qg-tooltip-id">SWPL</div><div class="qg-tooltip-name">Software Planning Gate</div><div class="qg-tooltip-desc">Development and test planning complete. SW architecture and unit test plans approved.</div></div></div>
-                    <div class="qg-node" tabindex="0"><div class="qg-label">SWDT</div><div class="qg-gem qg-gem--sm" style="background:#2563eb"></div><div class="qg-tooltip"><div class="qg-tooltip-id">SWDT</div><div class="qg-tooltip-name">Software Development Gate</div><div class="qg-tooltip-desc">Code reviews, unit testing, and static analysis performed. All SW defects tracked.</div></div></div>
-                    <div class="qg-node" tabindex="0"><div class="qg-label">SWRL</div><div class="qg-gem qg-gem--sm" style="background:#16a34a"></div><div class="qg-tooltip"><div class="qg-tooltip-id">SWRL</div><div class="qg-tooltip-name">Software Release Gate</div><div class="qg-tooltip-desc">Qualification and regression testing complete. SW released with sign-off documentation.</div></div></div>
-                    <div class="qg-node" tabindex="0"><div class="qg-label">SWCL</div><div class="qg-gem qg-gem--sm" style="background:#166534"></div><div class="qg-tooltip"><div class="qg-tooltip-id">SWCL</div><div class="qg-tooltip-name">Software Closure Gate</div><div class="qg-tooltip-desc">Software formally closed. Final SW documentation archived. Lessons learned captured.</div></div></div>
-                  </div>
-                </div>
+                
                 <div class="qg-namebox">
                   <div class="qg-namebox__title">Software Gate Quality Checks</div>
                   <div class="qg-namebox__grid">

@@ -135,7 +135,7 @@
         { type:'DOCX', label:'SYS.5 System Verification Measure Template', url:'/documents/aspice-prm/SYS/sys5/0860_ProjectName_Verification_Measure.docx', description:'Template for planning and recording system-level verification activities. Covers verification objectives, test specifications, execution records, deviation handling, and sign-off by responsible engineer.' }
       ],
       'SWE.1': [
-        { type:'XLSX', label:'SWE.1 SW Requirements Analysis Report Template', url:'/documents/aspice-prm/SWE/swe1/1501_ProjectName_AnalysisReport_Reviewed (1).xlsx', description:'Spreadsheet template for SW requirements analysis. Contains sheets for SW requirement ID, derivation from system requirements, interface requirement listing, consistency check results, and baseline approval status.' }
+        { type:'XLSX', label:'SWE.1 SW Requirements Analysis Report Template', url:'/documents/aspice-prm/SWE/swe1/1501_ProjectName_AnalysisReport_Reviewed.xlsx', description:'Spreadsheet template for SW requirements analysis. Contains sheets for SW requirement ID, derivation from system requirements, interface requirement listing, consistency check results, and baseline approval status.' }
       ],
       'SWE.2': [
         { type:'DOC',  label:'SWE.2 Software Architecture Design Template', url:'/documents/aspice-prm/SWE/swe2/CGVCU_SWE.2_SWArch_Template.doc', description:'Template for documenting the software architectural design. Includes sections for component decomposition, inter-component interfaces, design decisions, requirements allocation table, and architecture review sign-off.' },
@@ -148,12 +148,9 @@
         { type:'DOCX', label:'SWE.4 Software Unit Verification Measure Template', url:'/documents/aspice-prm/SWE/swe4/0860_ProjectName_Verification_Measure.docx', description:'Template for planning and recording software unit verification. Contains unit test case definitions, structural coverage targets, execution log, defect records, and sign-off table for unit verification completion.' }
       ],
       'SWE.5': [
-        { type:'DOCX', label:'SWE.5 SW Component Integration Verification Measure Template', url:'/documents/aspice-prm/SWE/swe5/0860_ProjectName_Verification_Measure (1).docx', description:'Template for documenting SW component integration verification results. Covers integration order plan, interface test cases, regression test scope, integration defect log, and verification completion sign-off.' }
+        { type:'DOCX', label:'SWE.5 SW Component Integration Verification Measure Template', url:'/documents/aspice-prm/SWE/swe5/0860_ProjectName_Verification_Measure.docx', description:'Template for documenting SW component integration verification results. Covers integration order plan, interface test cases, regression test scope, integration defect log, and verification completion sign-off.' }
       ],
-      'SWE.6': [
-        { type:'DOCX', label:'SWE.6 Software Verification Plan Template', url:'/documents/aspice-prm/SWE/swe6/0812_ProjectName_Project_Management_Plan_v1.0.docx', description:'Template for the SW verification plan covering verification strategy, acceptance criteria, test environment setup, test execution schedule, and traceability from SW requirements to verification evidence.' },
-        { type:'XLSX', label:'SWE.6 Team Skill Matrix Template', url:'/documents/aspice-prm/SWE/swe6/ProjectName_Skill_Matrix_Reviewed.xlsx', description:'Spreadsheet template for mapping team member competency levels against SW verification skills. Includes skill categories, proficiency ratings (1–4), training gap identification, and review date tracking.' }
-      ],
+
       'SUP.1': [
         { type:'DOCX', label:'SUP.1 Quality Management Plan Template', url:'/documents/aspice-prm/SUP/sup1/0813_ProjectName_QMP.docx', description:'Template for the project Quality Management Plan. Includes sections for QA objectives, process compliance activities, audit schedule, non-conformance handling procedure, quality records list, and QA reporting structure.' },
         { type:'XLSX', label:'SUP.1 Problem Record Tracking Template', url:'/documents/aspice-prm/SUP/sup1/1307_ProjectName_Problem_Record.xlsx', description:'Spreadsheet template for logging and tracking quality non-conformances. Contains columns for problem ID, detection date, severity, process area, root cause category, corrective action owner, and closure status.' },
@@ -175,11 +172,18 @@
       ],
       'MAN.3': [
         { type:'DOCX', label:'MAN.3 Project Management Plan Template', url:'/documents/aspice-prm/MAN/man3/0812_ProjectName_Project_Management_Plan_v1.0.docx', description:'Template for the Project Management Plan. Includes sections for project scope statement, WBS structure, schedule baselines, resource allocation table, effort estimation, risk summary, and project governance approach.' },
-        { type:'XLSX', label:'MAN.3 Team Skill Matrix Template', url:'/documents/aspice-prm/MAN/man3/ProjectName_Skill_Matrix_Reviewed.xlsx', description:'Spreadsheet template for tracking team skills against project role requirements. Contains skill domains, individual proficiency levels, training needs column, planned training dates, and manager review sign-off.' }
+        { type:'XLSX', label:'MAN.3 Team Skill Matrix Template', url:'/documents/aspice-prm/MAN/man3/ProjectName_Skill_Matrix_Reviewed.xlsx', description:'Spreadsheet template for tracking team skills against project role requirements. Contains skill domains, individual proficiency levels, training needs column, planned training dates, and manager review sign-off.' },
+        { type:'DOCX', label:'MAN.3 Communication Management Plan Template', url:'/documents/aspice-prm/MAN/man3/0800_ProjectName_Communication_Management_Plan.docx', description:'Template for the project Communication Management Plan. Includes sections for stakeholder communication needs, reporting channels and frequency, escalation paths, meeting cadence, and document distribution matrix.' },
+        { type:'DOCX', label:'MAN.3 Requirements Management Plan Template', url:'/documents/aspice-prm/MAN/man3/1700_ProjectName_RMP.docx', description:'Template for the Requirements Management Plan at project level. Covers requirements elicitation approach, traceability strategy, baseline and change control process, and stakeholder review/approval workflow.' },
+        { type:'DOCX', label:'MAN.3 Procurement Management Plan Template', url:'/documents/aspice-prm/MAN/man3/ProjectName_Procurement_Management_Plan.docx', description:'Template for the Procurement Management Plan. Includes sections for supplier selection criteria, contract types, purchase approval workflow, vendor performance tracking, and procurement risk considerations.' },
+        { type:'XLSX', label:'MAN.3 Technical Feasibility Checklist Template', url:'/documents/aspice-prm/MAN/man3/Technical_Feasibility_Checklists.xlsx', description:'Spreadsheet template for assessing technical feasibility at project initiation. Contains checklist items for technology readiness, resource availability, architectural risk, dependency analysis, and feasibility sign-off.' },
+        { type:'XLSX', label:'MAN.3 Project Task Tracker Template', url:'/documents/aspice-prm/MAN/man3/Project Task Tracker.xlsx', description:'Spreadsheet template for tracking project tasks day to day. Contains columns for task ID, owner, planned/actual dates, status, dependencies, blockers, and percentage completion.' }
       ],
       'MAN.5': [
         { type:'DOCX', label:'MAN.5 Risk & Issue Management Plan Template', url:'/documents/aspice-prm/MAN/man5/0819_ProjectName_Risk&Issue_Management_Plan.docx', description:'Template for the Risk and Issue Management Plan. Covers risk identification sources, likelihood/impact scoring matrix, risk treatment options, issue escalation criteria, owner assignment, and review cadence.' },
-        { type:'XLSX', label:'MAN.5 Risk Register Template', url:'/documents/aspice-prm/MAN/man5/1408_ProjectName_Risk_Register.xls', description:'Spreadsheet template for maintaining the project risk register. Contains columns for risk ID, description, category, probability score, impact score, risk level, mitigation action, owner, status, and residual risk rating.' }
+        { type:'XLSX', label:'MAN.5 Risk Register Template', url:'/documents/aspice-prm/MAN/man5/1408_ProjectName_Risk_Register.xls', description:'Spreadsheet template for maintaining the project risk register. Contains columns for risk ID, description, category, probability score, impact score, risk level, mitigation action, owner, status, and residual risk rating.' },
+        { type:'DOC', label:'MAN.5 Risk Management Plan Template', url:'/documents/aspice-prm/MAN/man5/0819_Risk_Management_Plan_Template.doc', description:'Template for the Risk Management Plan. Covers risk identification sources, likelihood/impact scoring matrix, risk treatment options, issue escalation criteria, owner assignment, and review cadence.' },
+        { type:'DOCX', label:'MAN.5 Corrective Action Report (CAR) Template', url:'/documents/aspice-prm/MAN/man5/1402_ProjectName_CAR.docx', description:'Template for recording a Corrective Action Report. Includes sections for problem description, root cause analysis, corrective action plan, responsible owner, target closure date, and effectiveness verification.' }
       ],
       'MAN.6': [
         { type:'XLSX', label:'MAN.6 Measurement & CSAT Feedback Template', url:'/documents/aspice-prm/MAN/man6/ProjectName_CSAT_Feedback.xlsx', description:'Spreadsheet template for project measurement and customer satisfaction tracking. Includes sheets for KPI definitions, monthly measurement data entry, trend charts, CSAT survey results aggregation, and management reporting summary.' }
@@ -291,7 +295,7 @@
     var a = el('a', {
       className : 'sd-doc-btn ' + (isDownload ? 'sd-doc-btn--dl' : 'sd-doc-btn--view'),
       href      : href,
-      textContent: isDownload ? '\u2193 Download' : '\u2197 View'
+      textContent: isDownload ? 'Download' : '\u2197 View'
     });
     if (isDownload) {
       a.setAttribute('download', filename || 'document');
@@ -326,7 +330,7 @@
           className: 'sd-doc-btn sd-doc-btn--dl',
           href: url,
           download: filename,
-          textContent: '\u2193 Download'
+          textContent: 'Download'
         });
         actions.appendChild(dlLink);
       } else {
