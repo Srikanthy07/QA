@@ -21,17 +21,17 @@
 return [
 
     /* ── SMTP Connection ── */
-    'smtp_host'       => 'smtp.gmail.com',         // Your SMTP host
+    'smtp_host'       => 'smtp.office365.com',         // Your SMTP host
     'smtp_port'       => 587,                       // 587 (TLS) or 465 (SSL)
     'smtp_secure'     => 'tls',                     // 'tls' or 'ssl'
     'smtp_auth'       => true,
 
     /* ── SMTP Credentials ── */
-    'smtp_username'   => 'srikanthy0707@gmail.com',    // ← Replace with your email
-    'smtp_password'   => 'fvwbnrddselxypfa',       // ← Replace with your App Password
+    'smtp_username'   => 'webadmin@iast-software.com',    // ← Replace with your email
+    'smtp_password'   => 'Iast@2018',       // ← Replace with your App Password
 
     /* ── From Address ── */
-    'from_email'      => 'srikanthy0707@gmail.com',    // ← Replace with your sender email
+    'from_email'      => 'webadmin@iast-software.com',    // ← Replace with your sender email
     'from_name'       => 'IAST Quality Website',
 
     /* ── Reply-To ── (will be set to the user who submitted feedback) */
@@ -40,8 +40,8 @@ return [
     /* ── Recipient Email Accounts ── */
     /* Add 4–5 email addresses that should receive every feedback submission */
     'recipients'      => [
-        'srikanthxfs.de@gmail.com',     // ← Replace with actual email
-            // ← Replace with actual email
+        'srikanthxfs.dev@gmail.com',     
+        'laxmanpagad72@gmail.com',
     ],
 
     /* ── Email Subject ── */

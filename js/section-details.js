@@ -172,11 +172,12 @@
       ],
       'MAN.3': [
         { type:'DOCX', label:'MAN.3 Project Management Plan Template', url:'/documents/aspice-prm/MAN/man3/0812_ProjectName_Project_Management_Plan_v1.0.docx', description:'Template for the Project Management Plan. Includes sections for project scope statement, WBS structure, schedule baselines, resource allocation table, effort estimation, risk summary, and project governance approach.' },
-        { type:'XLSX', label:'MAN.3 Team Skill Matrix Template', url:'/documents/aspice-prm/MAN/man3/ProjectName_Skill_Matrix_Reviewed.xlsx', description:'Spreadsheet template for tracking team skills against project role requirements. Contains skill domains, individual proficiency levels, training needs column, planned training dates, and manager review sign-off.' },
         { type:'DOCX', label:'MAN.3 Communication Management Plan Template', url:'/documents/aspice-prm/MAN/man3/0800_ProjectName_Communication_Management_Plan.docx', description:'Template for the project Communication Management Plan. Includes sections for stakeholder communication needs, reporting channels and frequency, escalation paths, meeting cadence, and document distribution matrix.' },
         { type:'DOCX', label:'MAN.3 Requirements Management Plan Template', url:'/documents/aspice-prm/MAN/man3/1700_ProjectName_RMP.docx', description:'Template for the Requirements Management Plan at project level. Covers requirements elicitation approach, traceability strategy, baseline and change control process, and stakeholder review/approval workflow.' },
         { type:'DOCX', label:'MAN.3 Procurement Management Plan Template', url:'/documents/aspice-prm/MAN/man3/ProjectName_Procurement_Management_Plan.docx', description:'Template for the Procurement Management Plan. Includes sections for supplier selection criteria, contract types, purchase approval workflow, vendor performance tracking, and procurement risk considerations.' },
+        { type:'XLSX', label:'MAN.3 Team Skill Matrix Template', url:'/documents/aspice-prm/MAN/man3/ProjectName_Skill_Matrix_Reviewed.xlsx', description:'Spreadsheet template for tracking team skills against project role requirements. Contains skill domains, individual proficiency levels, training needs column, planned training dates, and manager review sign-off.' },
         { type:'XLSX', label:'MAN.3 Technical Feasibility Checklist Template', url:'/documents/aspice-prm/MAN/man3/Technical_Feasibility_Checklists.xlsx', description:'Spreadsheet template for assessing technical feasibility at project initiation. Contains checklist items for technology readiness, resource availability, architectural risk, dependency analysis, and feasibility sign-off.' },
+        { type:'XLSX', label:'MAN.3 Lesson Learned Template', url:'/documents/aspice-prm/MAN/man3/1307_ProjectName_Lesson_Learned_Reviewed.xlsx', description:'Spreadsheet template for capturing project lessons learned, including issues encountered, root causes, corrective actions, best practices, and recommendations for future project improvements.' },
         { type:'XLSX', label:'MAN.3 Project Task Tracker Template', url:'/documents/aspice-prm/MAN/man3/Project Task Tracker.xlsx', description:'Spreadsheet template for tracking project tasks day to day. Contains columns for task ID, owner, planned/actual dates, status, dependencies, blockers, and percentage completion.' }
       ],
       'MAN.5': [
@@ -358,7 +359,7 @@
       if (docs.length === 0) {
         var empty = el('div', { className: 'sd-docs-empty' });
         empty.appendChild(el('i', { className: 'fas fa-folder-open' }));
-        empty.appendChild(el('p', { textContent: 'No documents are linked to this process yet. Check back later or contact the Quality team.' }));
+        empty.appendChild(el('p', { textContent: 'TBD - To Be Discussed.' }));
         body.appendChild(empty);
         return;
       }
