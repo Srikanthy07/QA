@@ -1,67 +1,76 @@
-
+/**
+ * flow-scale.js  v3
+ * Scales .im-process-wrapper proportionally to its container width.
+ * Minimum scale: 0.55 (flow never shrinks below 55% — remains readable).
+ * Below that threshold, flow scrolls horizontally instead.
+ */
 (function () {
-  var SELECTORS = '.qg-root, .im-process-wrapper';
-  var MAX_SCALE = 1; // never scale UP past the original desktop size
+  'use strict';
 
-  function wrap(el) {
-    if (el.parentElement && el.parentElement.classList.contains('flow-scale')) {
-      return el.parentElement; // already wrapped
-    }
-    var wrapper = document.createElement('div');
-    wrapper.className = 'flow-scale';
-    el.parentNode.insertBefore(wrapper, el);
-    wrapper.appendChild(el);
-    el.classList.add('flow-scale__inner');
-    return wrapper;
+  // Must match .im-process-wrapper { width: Xpx } in responsive-flow.css
+  var DESIGN_WIDTH = 1000;
+  // Minimum scale before switching to horizontal scroll
+  var MIN_SCALE = 0.55;
+
+  function wrapAll() {
+    document.querySelectorAll('.im-process-wrapper').forEach(function (wrapper) {
+      if (!wrapper.parentElement.classList.contains('im-scale-outer')) {
+        var outer = document.createElement('div');
+        outer.className = 'im-scale-outer';
+        wrapper.parentNode.insertBefore(outer, wrapper);
+        outer.appendChild(wrapper);
+      }
+    });
   }
 
-  function update(wrapper, inner) {
-    // Reset transform before measuring so we get the element's
-    // true natural size, not a previously-scaled one.
-    inner.style.transform = 'none';
+  function scaleAll() {
+    document.querySelectorAll('.im-process-wrapper').forEach(function (wrapper) {
+      var outer = wrapper.parentElement;
 
-    var naturalWidth = inner.scrollWidth;
-    var naturalHeight = inner.scrollHeight;
-    var availableWidth = wrapper.clientWidth;
+      // Reset so we can measure available space
+      wrapper.style.transform = '';
+      wrapper.style.width     = DESIGN_WIDTH + 'px';
+      outer.style.height      = '';
+      outer.style.overflowX   = '';
 
-    if (!naturalWidth || !availableWidth) return;
+      // Available width = parent container (the .im-block or section container)
+      var available = outer.offsetWidth || outer.parentElement.offsetWidth || window.innerWidth;
+      var raw = available / DESIGN_WIDTH;
+      var scale = Math.min(1, Math.max(MIN_SCALE, raw));
 
-    var scale = Math.min(MAX_SCALE, availableWidth / naturalWidth);
-    scale = Math.max(scale, 0.01);
+      if (raw < MIN_SCALE) {
+        // Too small to scale — let it scroll instead
+        wrapper.style.transform = 'none';
+        wrapper.style.width     = DESIGN_WIDTH + 'px';
+        outer.style.overflowX   = 'auto';
+        outer.style.overflowY   = 'hidden';
+        outer.style.height      = '';
+        // Add thin scrollbar
+        outer.style.scrollbarWidth = 'thin';
+      } else {
+        // Apply scale
+        wrapper.style.transform       = 'scale(' + scale + ')';
+        wrapper.style.transformOrigin = 'top left';
+        outer.style.overflowX         = 'hidden';
+        outer.style.overflowY         = 'hidden';
 
-    inner.style.transform = 'scale(' + scale + ')';
-    wrapper.style.height = Math.ceil(naturalHeight * scale) + 'px';
+        // Shrink outer height to match scaled height
+        var naturalH = wrapper.offsetHeight;
+        outer.style.height = (naturalH * scale) + 'px';
+      }
+    });
   }
 
-  function debounce(fn, wait) {
-    var t;
-    return function () {
-      clearTimeout(t);
-      var args = arguments;
-      t = setTimeout(function () { fn.apply(null, args); }, wait);
-    };
-  }
+  // Debounced resize
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(scaleAll, 80);
+  });
 
   function init() {
-    var blocks = document.querySelectorAll(SELECTORS);
-    blocks.forEach(function (el) {
-      var wrapper = wrap(el);
-      var inner = el;
-      var run = debounce(function () { update(wrapper, inner); }, 60);
-
-      // Recalculate whenever the wrapper's available width changes
-      // (window resize, sidebar toggle, orientation change, etc.)
-      if (typeof ResizeObserver !== 'undefined') {
-        var ro = new ResizeObserver(run);
-        ro.observe(wrapper.parentElement || wrapper);
-      } else {
-        window.addEventListener('resize', run);
-      }
-
-      // Initial measurement (after layout/fonts/icons settle)
-      run();
-      window.addEventListener('load', run);
-    });
+    wrapAll();
+    scaleAll();
   }
 
   if (document.readyState === 'loading') {
@@ -69,4 +78,10 @@
   } else {
     init();
   }
+
+  // Re-run after everything paints (fonts affect card height)
+  window.addEventListener('load', function () {
+    setTimeout(scaleAll, 150);
+  });
+
 })();

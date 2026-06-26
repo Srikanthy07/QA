@@ -454,7 +454,7 @@ ul  { list-style: none; }
 .qg-banner--sw   { background: #7e22ce; }
 
 .qg-body {
-  border-radius: 0 0 10px 10px;
+  overflow: visible !important;
   padding: 10px 24px 18px;
   border: 1.5px solid rgba(0,0,0,.08);
   border-top: none;
@@ -520,6 +520,7 @@ ul  { list-style: none; }
   border: 1.5px solid rgba(255,255,255,.5);
   margin-bottom: 7px; margin-top: -40px;
   transition: transform .18s;
+ 
 }
 .qg-tier:not(.qg-tier--sys):not(.qg-tier--sw) .qg-label { background: rgba(7,89,133,.82);  color: #e0f7fa; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
 .qg-tier--sys .qg-label                                  { background: rgba(30,58,138,.85); color: #c7d2fe; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
@@ -550,12 +551,26 @@ ul  { list-style: none; }
 
 /* Tooltip */
 .qg-tooltip {
-  position: absolute; bottom: calc(100% + 6px);
-  left: 50%; transform: translateX(-50%);
-  background: #0f172a; color: #fff;
-  border-radius: 9px; padding: 12px 14px; width: 230px;
-  pointer-events: none; opacity: 0; transition: opacity .2s;
-  z-index: 999; box-shadow: 0 12px 32px rgba(0,0,0,.45);
+  position: absolute;
+  bottom: calc(100% + 16px);
+  left: 50%;
+
+  background: #0f172a;
+  color: #fff;
+  border-radius: 10px;
+  padding: 14px 16px;
+  min-width: 240px;
+  max-width: 300px;
+  width: max-content;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .25s ease;
+  z-index: 99999;
+  box-shadow: 0 12px 32px rgba(0,0,0,.45);
+
+  transform: translateX(-50%) translateY(10px);
+
 }
 .qg-tooltip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:7px solid transparent; border-top-color:#0f172a; }
 
@@ -564,12 +579,40 @@ ul  { list-style: none; }
 .qg-node:last-child .qg-tooltip::after,
 .qg-node:nth-last-child(2) .qg-tooltip::after { left: auto; right: 18px; transform: none; }
 
+
+/* ── Fix: prevent first-node tooltips from spilling off the LEFT edge ── */
+.qg-node:first-child .qg-tooltip,
+.qg-node:nth-child(2) .qg-tooltip {
+  left: 0;
+  right: auto;
+  transform: none;
+}
+
+.qg-node:first-child .qg-tooltip::after,
+.qg-node:nth-child(2) .qg-tooltip::after {
+  left: 18px;
+  right: auto;
+  transform: none;
+}
+
+
 .qg-tooltip-id   { font-size: 16px; font-weight: 800; color: #38bdf8; margin-bottom: 3px; }
 .qg-tooltip-name { font-size: 15px; font-weight: 700; color: #f1f5f9; margin-bottom: 5px; line-height: 1.3; }
 .qg-tooltip-desc { font-size: 14px; color: #94a3b8; line-height: 1.7; }
 
 .qg-node:hover .qg-tooltip,
-.qg-node:focus .qg-tooltip  { opacity: 1; }
+.qg-node:focus .qg-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+.qg-root,
+.qg-tier,
+.qg-body,
+.qg-track-zone,
+.qg-phases,
+.qg-phase {
+    overflow: visible !important;
+}
 
 .qg-namebox__item:hover {
     transform: translateY(-8px) scale(1.03);
@@ -598,7 +641,13 @@ ul  { list-style: none; }
 .qg-phase .qg-tooltip::after { top: auto; bottom: 100%; border-top-color: transparent; border-bottom-color: #0f172a; }
 .qg-phase:last-child .qg-tooltip { left: auto; right: 0; transform: none; }
 .qg-phase:hover .qg-tooltip,
-.qg-phase:focus .qg-tooltip { opacity: 1; }
+.qg-phase:focus .qg-tooltip,
+.qg-node:hover .qg-tooltip,
+.qg-node:focus .qg-tooltip {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 
 .qg-namebox__title {
   font-family: var(--font-head);
@@ -1143,122 +1192,26 @@ ul  { list-style: none; }
 
 /* ══════════════════════════════════════════
    RESPONSIVE - Issue Management
+   NOTE: im-process-flow sizing is handled by
+   responsive-flow.css + flow-scale.js (transform:scale approach).
+   Only non-flow responsive rules remain here.
 ══════════════════════════════════════════ */
-
-@media (max-width: 992px) {
-  .im-step {
-    flex: 0 0 110px;
-    min-width: 100px;
-    padding: 12px 10px 10px;
-  }
-  .im-step__label {
-    font-size: 0.72rem;
-  }
-  .im-step__desc {
-    display: none;
-  }
-  .im-step__icon {
-    width: 36px;
-    height: 36px;
-  }
-  .im-step__icon svg {
-    width: 16px;
-    height: 16px;
-  }
-  .im-arrow {
-    font-size: 1rem;
-    min-width: 20px;
-  }
-  
-}
 
 @media (max-width: 768px) {
   .im-two-col {
     grid-template-columns: 1fr;
   }
-  
-  .im-process-flow {
-    gap: 4px;
-    padding: 6px 0;
-    overflow-x: auto;
-    justify-content: flex-start;
-  }
-  
-  .im-step {
-    flex: 0 0 90px;
-    min-width: 85px;
-    padding: 10px 8px 8px;
-  }
-  
-  .im-step__label {
-    font-size: 0.65rem;
-  }
-  
-  .im-step__icon {
-    width: 30px;
-    height: 30px;
-    margin-bottom: 6px;
-  }
-  
-  .im-step__icon svg {
-    width: 14px;
-    height: 14px;
-  }
-  
-  .im-arrow {
-    font-size: 0.8rem;
-    min-width: 14px;
-  }
-  
   .im-trigger-grid {
     grid-template-columns: 1fr;
   }
-  
   .im-sev-header,
   .im-sev-row {
     grid-template-columns: 80px 1fr 1fr;
   }
-  
   .im-sev-header > div:last-child,
   .im-sev-row > div:last-child {
     display: none;
   }
-}
-
-@media (max-width: 540px) {
-  .im-process-flow {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    justify-content: flex-start;
-    padding: 4px 6px;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .im-process-flow::-webkit-scrollbar {
-    height: 3px;
-  }
-  
-  .im-process-flow::-webkit-scrollbar-track {
-    background: var(--gray-100);
-    border-radius: 2px;
-  }
-  
-  .im-process-flow::-webkit-scrollbar-thumb {
-    background: var(--teal);
-    border-radius: 2px;
-  }
-  
-  .im-step {
-    flex: 0 0 100px;
-    min-width: 95px;
-  }
-  
-  .im-arrow {
-    font-size: 0.7rem;
-    min-width: 12px;
-  }
-  
- 
 }
 
 /* ══════════════════════════════════════════
@@ -1403,9 +1356,7 @@ ul  { list-style: none; }
   .im-step { flex: 1 1 80px; min-width: 80px; }
 }
 @media (max-width: 540px) {
-  .im-process-flow { flex-wrap: wrap; gap: 8px; }
-  .im-process-flow .im-arrow { display: none; }
-  .im-step { flex: 0 0 calc(50% - 4px); max-width: none; }
+  /* Flow structure preserved — see responsive-flow.css */
   .fir-row { grid-template-columns: 1fr; }
   .fir-row--header > div:last-child { display: none; }
   .fir-row > div:last-child::before { content: 'Owner: '; font-weight: 600; color: var(--gray-400); }
@@ -1751,12 +1702,14 @@ ul  { list-style: none; }
 
 /* ── Step Cards ── */
 .im-step {
-  flex: 0 0 140px;
-  min-width: 130px;
+  flex: 1 1 180px;
+  min-width: 180px;
+  max-width: 240px;
+  width: 100%;
   background: var(--white);
   border: 1px solid var(--gray-200);
   border-radius: var(--radius-md);
-  padding: 14px 12px 12px;
+  padding: 16px 14px 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1764,7 +1717,6 @@ ul  { list-style: none; }
   transition: var(--transition);
   position: relative;
   z-index: 2;
-  min-height: 170px;
 }
 
 /* ── Arrow ── */
@@ -1969,10 +1921,7 @@ ul  { list-style: none; }
 }
 
 @media (max-width: 768px) {
-  .navbar__nav { display: none; position: absolute; top: 68px; left: 0; right: 0; background: var(--navy); flex-direction: column; align-items: stretch; padding: 16px; gap: 4px; border-top: 1px solid rgba(255,255,255,.08); }
-  .navbar__nav.open { display: flex; }
-  .navbar__toggle   { display: flex; }
-  .navbar__logo     { height: 40px; max-width: 170px; }
+  /* Navbar is handled at 1024px in responsive-flow.css */
   .section          { padding: 56px 0; }
   .vision-grid      { grid-template-columns: 1fr 1fr; }
   .culture-grid     { grid-template-columns: 1fr; }
@@ -1986,8 +1935,6 @@ ul  { list-style: none; }
   .im-sev-row       { grid-template-columns: 80px 1fr 1fr; }
   .im-sev-header > div:last-child,
   .im-sev-row > div:last-child { display: none; }
-  .im-process-flow  { gap: 6px; }
-  .im-step          { flex: 0 0 130px; min-width: 120px; }
   .im-connector-bridge { right: 16px; width: 60px; height: 100px; }
 }
 
@@ -1998,25 +1945,11 @@ ul  { list-style: none; }
   .pig-cells--grid4 { grid-template-columns: 1fr 1fr; }
 }
 
+/* ── 540px: flow scrolls horizontally, structure preserved ──
+   (Override is in responsive-flow.css — this block intentionally
+   left as no-op to avoid stacking / arrow removal) */
 @media (max-width: 540px) {
-  .im-process-flow {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-    overflow: visible;
-    padding: 8px 0;
-  }
-
-  .im-step {
-    width: 100%;
-    min-width: 100%;
-    min-height: auto;
-  }
-
-  .im-arrow,
-  .im-down-connector {
-    display: none !important;
-  }
+  /* Handled by responsive-flow.css */
 }
 
 @media (max-width: 480px) {
