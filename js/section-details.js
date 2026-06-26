@@ -135,10 +135,11 @@
         { type:'DOCX', label:'SYS.5 System Verification Measure Template', url:'/documents/aspice-prm/SYS/sys5/0860_ProjectName_Verification_Measure.docx', description:'Template for planning and recording system-level verification activities. Covers verification objectives, test specifications, execution records, deviation handling, and sign-off by responsible engineer.' }
       ],
       'SWE.1': [
-        { type:'XLSX', label:'SWE.1 SW Requirements Analysis Report Template', url:'/documents/aspice-prm/SWE/swe1/1501_ProjectName_AnalysisReport_Reviewed.xlsx', description:'Spreadsheet template for SW requirements analysis. Contains sheets for SW requirement ID, derivation from system requirements, interface requirement listing, consistency check results, and baseline approval status.' }
+        { type:'XLSX', label:'SWE.1 SW Requirements Analysis Report Template', url:'/documents/aspice-prm/SWE/swe1/1501_ProjectName_AnalysisReport_Reviewed.xlsx', description:'Spreadsheet template for SW requirements analysis. Contains sheets for SW requirement ID, derivation from system requirements, interface requirement listing, consistency check results, and baseline approval status.' },
+        { type:'DOCX', label:'SWE.1 SW Requirements Analysis Report Template', url:'/documents/aspice-prm/SWE/swe1/1700_ProjectName_RMP_1.0_Reviewed.docx', description:'Template for documenting software requirements analysis, including software requirement specifications, traceability to system requirements, functional and non-functional requirements, interface definitions, and review approval status.'}
       ],
       'SWE.2': [
-        { type:'DOC',  label:'SWE.2 Software Architecture Design Template', url:'/documents/aspice-prm/SWE/swe2/CGVCU_SWE.2_SWArch_Template.doc', description:'Template for documenting the software architectural design. Includes sections for component decomposition, inter-component interfaces, design decisions, requirements allocation table, and architecture review sign-off.' },
+        { type:'DOCX',  label:'SWE.2 Software Architecture Design Template', url:'/documents/aspice-prm/SWE/swe2/CGVCU_SWE.2_SWArch_Template.docx', description:'Template for documenting the software architectural design. Includes sections for component decomposition, inter-component interfaces, design decisions, requirements allocation table, and architecture review sign-off.' },
         { type:'DOCX', label:'SWE.2 Software Architecture Guideline Template', url:'/documents/aspice-prm/SWE/swe2/Software Architecture Guideline.docx', description:'Organisational guideline template for creating ASPICE-compliant software architecture documents. Covers naming conventions, diagram standards, review process, tool usage, and mandatory content checklist.' }
       ],
       'SWE.3': [
@@ -150,7 +151,9 @@
       'SWE.5': [
         { type:'DOCX', label:'SWE.5 SW Component Integration Verification Measure Template', url:'/documents/aspice-prm/SWE/swe5/0860_ProjectName_Verification_Measure.docx', description:'Template for documenting SW component integration verification results. Covers integration order plan, interface test cases, regression test scope, integration defect log, and verification completion sign-off.' }
       ],
-
+      'SWE.6': [
+        { type:'DOCX', label:'SWE.6 Software Verification Measure Template', url:'/documents/aspice-prm/SWE/swe6/0860_ProjectName_Verification_Measure.docx', description:'Template for planning and recording software verification activities. Includes sections for verification objectives, test specifications, execution records, deviation handling, and sign-off by responsible engineer.' }
+      ],    
       'SUP.1': [
         { type:'DOCX', label:'SUP.1 Quality Management Plan Template', url:'/documents/aspice-prm/SUP/sup1/0813_ProjectName_QMP.docx', description:'Template for the project Quality Management Plan. Includes sections for QA objectives, process compliance activities, audit schedule, non-conformance handling procedure, quality records list, and QA reporting structure.' },
         { type:'XLSX', label:'SUP.1 Problem Record Tracking Template', url:'/documents/aspice-prm/SUP/sup1/1307_ProjectName_Problem_Record.xlsx', description:'Spreadsheet template for logging and tracking quality non-conformances. Contains columns for problem ID, detection date, severity, process area, root cause category, corrective action owner, and closure status.' },
