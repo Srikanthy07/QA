@@ -28,7 +28,7 @@ return [
 
     /* ── SMTP Credentials ── */
     'smtp_username'   => 'webadmin@iast-software.com',    // ← Replace with your email
-    'smtp_password'   => '',       // ← Replace with your App Password
+    'smtp_password'   => 'Iast@2018',       // ← Replace with your App Password
 
     /* ── From Address ── */
     'from_email'      => 'webadmin@iast-software.com',    // ← Replace with your sender email
