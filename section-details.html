@@ -15,8 +15,10 @@
 
   <!-- Reuse existing portal stylesheet -->
   <link rel="stylesheet" href="/css/style.css?v=7"/>
-
+  <link rel="stylesheet" href="/css/responsive-flow.css"/>
+  <link rel="stylesheet" href="/css/responsive-layout.css"/>
   <!-- Page-specific styles (scoped to this page only) -->
+   
   <style>
     /* ── Page layout ── */
     .sd-page {
@@ -32,9 +34,9 @@
       padding: 40px 0 36px;
     }
     .sd-hero__inner {
-      max-width: 900px;
+      /* max-width controlled by responsive-layout.css via --container-max */
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 var(--c-pad, 24px);
     }
 
     /* ── Back button ── */
@@ -103,9 +105,9 @@
 
     /* ── Main card container ── */
     .sd-content {
-      max-width: 900px;
+      /* max-width controlled by responsive-layout.css via --container-max */
       margin: 32px auto 0;
-      padding: 0 24px;
+      padding: 0 var(--c-pad, 24px);
       display: grid;
       gap: 20px;
     }

@@ -28,10 +28,11 @@
       var outer = wrapper.parentElement;
 
       // Reset so we can measure available space
-      wrapper.style.transform = '';
-      wrapper.style.width     = DESIGN_WIDTH + 'px';
-      outer.style.height      = '';
-      outer.style.overflowX   = '';
+      wrapper.style.transform  = '';
+      wrapper.style.width      = DESIGN_WIDTH + 'px';
+      wrapper.style.marginLeft = '';
+      outer.style.height       = '';
+      outer.style.overflowX    = '';
 
       // Available width = parent container (the .im-block or section container)
       var available = outer.offsetWidth || outer.parentElement.offsetWidth || window.innerWidth;
@@ -40,11 +41,12 @@
 
       if (raw < MIN_SCALE) {
         // Too small to scale — let it scroll instead
-        wrapper.style.transform = 'none';
-        wrapper.style.width     = DESIGN_WIDTH + 'px';
-        outer.style.overflowX   = 'auto';
-        outer.style.overflowY   = 'hidden';
-        outer.style.height      = '';
+        wrapper.style.transform  = 'none';
+        wrapper.style.width      = DESIGN_WIDTH + 'px';
+        wrapper.style.marginLeft = '';
+        outer.style.overflowX    = 'auto';
+        outer.style.overflowY    = 'hidden';
+        outer.style.height       = '';
         // Add thin scrollbar
         outer.style.scrollbarWidth = 'thin';
       } else {
@@ -57,6 +59,11 @@
         // Shrink outer height to match scaled height
         var naturalH = wrapper.offsetHeight;
         outer.style.height = (naturalH * scale) + 'px';
+
+        // Centre the scaled wrapper horizontally
+        // scaledWidth = DESIGN_WIDTH * scale; leftover = available - scaledWidth
+        var leftover = available - (DESIGN_WIDTH * scale);
+        wrapper.style.marginLeft = (leftover > 0 ? leftover / 2 : 0) + 'px';
       }
     });
   }

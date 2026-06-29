@@ -120,27 +120,32 @@
 
   const normalizePath = pathname => pathname === '' ? '/' : pathname;
 
+  /* Clear all highlights */
+  const clearActive = () => {
+    links.forEach(link => link.classList.remove('active'));
+  };
+
+  /* Set one link active, clear the rest */
   const setActiveLink = activeLink => {
     links.forEach(link => link.classList.toggle('active', link === activeLink));
   };
 
-  const pageLink = links.find(link => {
-    const href = link.getAttribute('href');
-    if (!href || href.includes('#')) return false;
-
-    const url = new URL(href, window.location.href);
-    return normalizePath(url.pathname) === normalizePath(path);
+  /* The "Home" link — never highlighted */
+  const homeLink = links.find(link => {
+    const href = link.getAttribute('href') || '';
+    return href === '/' || href === '' || href === 'index.html';
   });
 
-  if (pageLink) {
-    setActiveLink(pageLink);
-  }
+  /* On page load: no highlight at all (we're at the top) */
+  clearActive();
 
+  /* Build section→link map (only hash links on this page) */
   const sectionLinks = links
     .map(link => {
-      const url = new URL(link.getAttribute('href'), window.location.href);
-      if (normalizePath(url.pathname) !== normalizePath(path) || !url.hash) return null;
-
+      const href = link.getAttribute('href') || '';
+      if (!href.includes('#')) return null;
+      const url = new URL(href, window.location.href);
+      if (normalizePath(url.pathname) !== normalizePath(path)) return null;
       const section = document.getElementById(decodeURIComponent(url.hash.slice(1)));
       return section ? { link, section } : null;
     })
@@ -149,6 +154,12 @@
   if (!sectionLinks.length) return;
 
   const observer = new IntersectionObserver(entries => {
+    /* If near the top → clear everything, Home is never highlighted */
+    if (window.scrollY < 80) {
+      clearActive();
+      return;
+    }
+
     const visible = entries
       .filter(entry => entry.isIntersecting)
       .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
@@ -156,11 +167,18 @@
     if (!visible) return;
 
     const current = sectionLinks.find(item => item.section === visible.target);
-    setActiveLink(current ? current.link : pageLink);
+    if (current && current.link !== homeLink) {
+      setActiveLink(current.link);
+    }
   }, {
     rootMargin: '-90px 0px -55% 0px',
     threshold: [0.1, 0.25, 0.5]
   });
+
+  /* Direct scroll guard — clears highlight whenever near top */
+  window.addEventListener('scroll', () => {
+    if (window.scrollY < 80) clearActive();
+  }, { passive: true });
 
   sectionLinks.forEach(item => observer.observe(item.section));
 })();
@@ -293,5 +311,3 @@
     console.log('tsParticles initialization skipped or failed gracefully');
   }
 })();
-
-

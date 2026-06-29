@@ -44,7 +44,12 @@ a   { text-decoration: none; color: inherit; }
 ul  { list-style: none; }
 
 /* ── Utilities ── */
-.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+/* ── Fluid container — scales from 1200px up to 1800px on large screens ── */
+:root {
+  --container-max : clamp(1200px, 88vw, 1800px);
+  --c-pad         : clamp(16px, 1.8vw, 36px);
+}
+.container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--c-pad); }
 .section { padding: 80px 0; }
 .section, .gate-section, .page-hero, .prm-section, [id] { scroll-margin-top: 88px; }
 .section--gray      { background: var(--gray-100); }
@@ -92,12 +97,15 @@ ul  { list-style: none; }
 }
 .navbar.scrolled { box-shadow: var(--shadow-lg); }
 .navbar__inner {
+
   display: flex; align-items: center; justify-content: space-between;
-  width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px;
+  width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 var(--c-pad);
 }
 .navbar__brand { display: flex; align-items: center; flex: 0 0 auto; }
 .navbar__logo  { width: auto; height: 48px; max-width: 220px; object-fit: contain; }
-.navbar__nav   { display: flex; align-items: center; gap: 6px; }
+/* Spacer pushes nav away from logo — prevents them colliding on mid-size screens */
+.navbar__spacer { flex: 1 1 auto; min-width: 80px; }
+.navbar__nav   { display: flex; align-items: center; gap: 4px; }
 .navbar__link  {
   padding: 8px 16px; border-radius: var(--radius-sm);
   font-size: .9rem; font-weight: 600; color: var(--gray-200);
@@ -128,8 +136,8 @@ ul  { list-style: none; }
 }
 .hero__inner {
   display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
-  align-items: center; padding: 80px 24px;
-  max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 1;
+  align-items: center; padding: 80px var(--c-pad);
+  max-width: var(--container-max); margin: 0 auto; width: 100%; position: relative; z-index: 1;
 }
 .hero__badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -467,7 +475,7 @@ ul  { list-style: none; }
 
 .qg-tier:hover .qg-body   { box-shadow: var(--shadow-md); transform: translateY(-3px); }
 .qg-tier:hover .qg-banner { filter: brightness(1.08); }
-
+.qg-track-scroll { width: 100%; }
 .qg-track-zone { position: relative; height: 96px; display: flex; align-items: center; }
 
 .qg-pipe { position: absolute; left: 22px; right: 22px; height: 22px; border-radius: 11px; top: 50%; transform: translateY(-50%); z-index: 1; }
@@ -1607,7 +1615,7 @@ ul  { list-style: none; }
    FOOTER
 ══════════════════════════════════════════ */
 .footer { background: var(--gray-800); color: rgba(255,255,255,.65); padding: 60px 0 30px; }
-.footer__inner { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+.footer__inner { display: grid; grid-template-columns: 2.5fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
 .footer__logo  { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
 .footer__logo-img { width: auto; height: 58px; max-width: 250px; object-fit: contain; }
 .footer__desc  { font-size: .87rem; line-height: 1.7; color: rgba(255,255,255,.5); max-width: 300px; }
@@ -1689,7 +1697,7 @@ ul  { list-style: none; }
 .im-down-connector {
   position: absolute;
   top: 48%;
-  left: 86%;
+  left: 89%;
   transform: translate(-50%, -50%);
   font-size: 1.3rem;
   color: var(--gray-400);
@@ -1910,6 +1918,12 @@ ul  { list-style: none; }
 /* ══════════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════════ */
+
+/* ── Fluid padding token overrides per breakpoint ── */
+@media (max-width: 1024px) { :root { --c-pad: clamp(14px, 2.5vw, 24px); } }
+@media (max-width: 768px)  { :root { --c-pad: 16px; } }
+@media (max-width: 480px)  { :root { --c-pad: 12px; } }
+
 @media (max-width: 1024px) {
   .hero__inner  { grid-template-columns: 1fr; gap: 48px; }
   .hero__visual { display: none; }
@@ -1927,9 +1941,6 @@ ul  { list-style: none; }
   .culture-grid     { grid-template-columns: 1fr; }
   .footer__inner    { grid-template-columns: 1fr; gap: 32px; }
   .hero__stats      { gap: 20px; flex-wrap: wrap; }
-  .qg-label         { font-size: 11px; padding: 2px 6px; }
-  .qg-phases        { flex-wrap: wrap; }
-  .qg-phase         { min-width: 30%; }
   .im-trigger-grid  { grid-template-columns: 1fr; }
   .im-sev-header,
   .im-sev-row       { grid-template-columns: 80px 1fr 1fr; }
